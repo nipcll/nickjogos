@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <title>Jogo de Reação</title>
+    <style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        button {
+            width: 200px;
+            height: 200px;
+            background-color: grey;
+        }
+    </style>
+</head>
+
+
+<body>
+    <button id="botao" onclick="startGame()">Iniciar Jogo</button>
+    <p id="resultado"></p>
+</body>
+
+
+<script>
+    let jogoStarted = false;
+    let startTempo, endTempo;
+
+
+    function clique() {
+        jogoStarted = true;
+        const botao = document.getElementById('botao');
+        botao.style.backgroundColor = "green";
+        botao.innerText = 'CLIQUE!';
+        startTempo = new Date().getTime();
+    }
+
+
+    function startGame() {
+        if (!jogoStarted) {
+            const botao = document.getElementById('botao');
+            botao.style.backgroundColor = "red";
+            botao.innerText = '...';
+            setTimeout(clique, Math.random() * 2000 + 1000); // Tempo aleatório entre 1 e 3 segundos
+        }
+
+
+        if (jogoStarted) {
+            endTempo = new Date().getTime();
+            const resultado = (endTempo - startTempo) / 1000;
+            document.getElementById('resultado').innerText = `Tempo de reação: ${resultado.toFixed(3)} segundos`;
+            jogoStarted = false;
+            const botao = document.getElementById('botao');
+            botao.style.backgroundColor = "grey";
+            botao.innerText = 'Iniciar Jogo';
+        }
+    }
+</script>
+
+
+</html>

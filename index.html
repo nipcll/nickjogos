@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <title>Nick Jogos em HTML</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-cyborg-gaming.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+</head>
+
+<body>
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="js-preloader" class="js-preloader">
+        <div class="preloader-inner">
+            <span class="dot"></span>
+            <div class="dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="index.html" class="logo">
+                            <img src="logo.png" alt="">
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li><a href="index.html" class="active">Página Inicial</a></li>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="page-content">
+
+                    <!-- ***** Banner Start ***** -->
+                    <div class="main-banner">
+                        <div class="row">
+                            <div class="col-lg-7">
+                                <div class="header-text">
+                                    <h6>Boas vindas ao Nick Jogos</h6>
+                                    <h4><em>Veja</em> Nossos Jogos Mais Populares</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ***** Banner End ***** -->
+
+                    <!-- ***** Most Popular Start ***** -->
+                    <div class="most-popular">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="heading-section">
+                                    <h4><em>Mais Populares</em> Agora</h4>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-sm-6">
+                                        <div class="item">
+                                            <img src="data:image/png;base64,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"
+                                                alt="">
+                                            <h4><a href="velha.html">Jogo da Velha</a><br><span>Em Dupla</span></h4>
+                                            <ul>
+                                                <li><i class="fa fa-star"></i></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-sm-6">
+                                        <div class="item">
+                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQRrKc9PjAPaQnyZcNKCeAYI4Ob5vub_ZZSA&usqp=CAU" alt="">
+                                            <h4><a href="reacao.html">Jogo da Reação</a><br><span>Individual</span></h4>
+                                            <ul>
+                                                <li><i class="fa fa-star"></i></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-sm-6">
+                                        <div class="item">
+                                            <img src="data:image/png;base64,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"
+                                                alt="">
+                                            <h4><a href="forca.html">Jogo da Forca</a><br><span>Individual</span></h4>
+                                            <ul>
+                                                <li><i class="fa fa-star"></i></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ***** Most Popular End ***** -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Scripts -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="assets/js/isotope.min.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/tabs.js"></script>
+    <script src="assets/js/popup.js"></script>
+    <script src="assets/js/custom.js"></script>
+
+    <!-- JQuery de animação -->
+    <script>
+        $(document).ready(function() {
+            $(".header-text").addClass("animate__animated animate__bounceIn");
+        });
+    </script>
+
+</body>
+
+</html>

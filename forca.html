@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <title>Jogo de Forca</title>
+</head>
+
+
+<style>
+    body,
+    html {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    
+    div,
+    button {
+        height: 50px;
+        margin: 5px;
+    }
+    
+    input {
+        height: 30px;
+        margin: 5px;
+    }
+</style>
+
+
+<body>
+    <h1>Forca!</h1>
+    <div id="displayPalavra"></div>
+    <input type="text" id="inputPlayer" placeholder="Chute uma letra">
+    <button onclick="chechaChute()">Chutar</button>
+    <div id="vidas">Vidas: <span id="vidasCount"></span></div>
+</body>
+
+
+<script>
+    const palavras = ["morango", "azul", "boneca", "livro"];
+
+
+    const maxVidas = 15;
+    let vidas = maxVidas;
+    let qualPalavra = "";
+    let letrasChute = [];
+
+
+    function selecionarPalavra() {
+        qualPalavra = palavras[Math.floor(Math.random() * palavras.length)];
+        letrasChute = Array(qualPalavra.length).fill(false);
+        mostrarPalavra();
+    }
+
+
+    function mostrarPalavra() {
+        const displayPalavra = document.getElementById("displayPalavra");
+        displayPalavra.innerHTML = letrasChute.map((guessed, index) =>
+            guessed ? qualPalavra[index] : "_").join(" ");
+    }
+
+
+    function chechaChute() {
+        const input = document.getElementById("inputPlayer");
+        const chute = input.value.toLowerCase();
+        input.value = "";
+
+
+        if (chute.length !== 1 || !chute.match(/[a-z]/i)) {
+            alert("Chute apenas letras!");
+            return;
+        }
+
+
+        if (letrasChute.includes(chute)) {
+            alert("Você já chutou essa letra!");
+            return;
+        }
+
+
+        let chuteCorreto = false;
+        for (let i = 0; i < qualPalavra.length; i++) {
+            if (qualPalavra[i] === chute) {
+                letrasChute[i] = true;
+                chuteCorreto = true;
+            }
+        }
+
+
+        if (!chuteCorreto) {
+            vidas--;
+            const vidasCount = document.getElementById("vidasCount");
+            vidasCount.textContent = vidas;
+
+
+            if (vidas <= 0) {
+                endJogo();
+                return;
+            }
+        }
+
+
+        mostrarPalavra();
+
+
+        if (!letrasChute.includes(false)) {
+            endJogo(true);
+        }
+    }
+
+
+    function endJogo(victory = false) {
+        if (victory) {
+            alert("Parabéns, você adivinhou a palavra!");
+        } else {
+            alert("Suas vidas acabaram. Tente novamente!");
+        }
+        vidas = maxVidas;
+        const vidasCount = document.getElementById("vidasCount");
+        vidasCount.textContent = vidas;
+        selecionarPalavra();
+    }
+
+
+    selecionarPalavra();
+</script>
+
+
+</html>

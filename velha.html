@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Jogo da Velha</title>
+    <style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: 100px 100px 100px;
+            grid-template-rows: 100px 100px 100px;
+            gap: 2px;
+            margin-top: 20px;
+        }
+        
+        .item {
+            border: 3px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grid">
+        <div class="item" onclick="jogada(0, 0)"></div>
+        <div class="item" onclick="jogada(0, 1)"></div>
+        <div class="item" onclick="jogada(0, 2)"></div>
+        <div class="item" onclick="jogada(1, 0)"></div>
+        <div class="item" onclick="jogada(1, 1)"></div>
+        <div class="item" onclick="jogada(1, 2)"></div>
+        <div class="item" onclick="jogada(2, 0)"></div>
+        <div class="item" onclick="jogada(2, 1)"></div>
+        <div class="item" onclick="jogada(2, 2)"></div>
+    </div>
+</body>
+
+
+<script>
+    let player = 'X';
+    let quadro = [
+        ['', '', ''],
+        ['', '', ''],
+        ['', '', '']
+    ];
+
+
+    function checaWinner() {
+
+
+        for (let i = 0; i < 3; i++) {
+            if (quadro[i][0] === player &&
+                quadro[i][1] === player &&
+                quadro[i][2] === player) {
+                return true;
+            }
+            if (quadro[0][i] === player &&
+                quadro[1][i] === player &&
+                quadro[2][i] === player) {
+                return true;
+            }
+        }
+
+
+        if (quadro[0][0] === player &&
+            quadro[1][1] === player &&
+            quadro[2][2] === player) {
+            return true;
+        }
+
+
+        if (quadro[0][2] === player &&
+            quadro[1][1] === player &&
+            quadro[2][0] === player) {
+            return true;
+        }
+        return false;
+    }
+
+
+    function checaDraw() {
+
+
+        for (let i = 0; i < 3; i++) {
+
+
+            for (let j = 0; j < 3; j++) {
+                if (quadro[i][j] === '') {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+
+    function resetaQuadro() {
+        quadro = [
+            ['', '', ''],
+            ['', '', ''],
+            ['', '', '']
+        ];
+        player = 'X';
+        const itemsGrid = document.getElementsByClassName('item');
+        for (let i = 0; i < itemsGrid.length; i++) {
+            itemsGrid[i].innerText = '';
+        }
+    }
+
+
+    function jogada(row, col) {
+
+
+        if (quadro[row][col] === '') {
+            quadro[row][col] = player;
+            document.getElementsByClassName('item')[row * 3 + col].innerText = player;
+
+
+            if (checaWinner()) {
+                alert(`O jogador ${player} venceu!`);
+                resetaQuadro();
+            } else if (checaDraw()) {
+                alert('Empate!');
+                resetaQuadro();
+            } else {
+                player = player === 'X' ? 'O' : 'X';
+            }
+
+
+            if (player === 'X') {
+                document.getElementsByClassName('item')[row * 3 + col].style.color = 'yellow';
+            } else {
+                document.getElementsByClassName('item')[row * 3 + col].style.color = 'red';
+            }
+        }
+    }
+</script>
+
+
+</html>
